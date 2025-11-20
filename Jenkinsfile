@@ -22,8 +22,8 @@ pipeline {
                             ${sonarScannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=juice-shop \
                             -Dsonar.sources=. \
-                            -Dsonar.host.url=\$SONAR_HOST_URL \
-                            -Dsonar.login=\$SONAR_AUTH_TOKEN
+                            -Dsonar.host.url=$SONAR_HOST_URL \
+                            -Dsonar.login=$SONAR_AUTH_TOKEN
                         """
                     }
                 }
