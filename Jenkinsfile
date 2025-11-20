@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE_SERVER = 'sonarqube'   // <-- This must match your Jenkins SonarQube config name
+        SONARQUBE_SERVER = 'SonarQube-Local'   // <-- This must match your Jenkins SonarQube config name
         SCANNER = 'SonarQubeScanner'     // <-- This must match your Jenkins Scanner installation name
     }
 
