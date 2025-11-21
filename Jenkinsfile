@@ -56,7 +56,7 @@ pipeline {
             steps {
                 nodejs('NodeJS') {
                     // Install Retire.js globally or locally as a project dependency
-                    sh 'npm install -g retire.js' 
+                    sh 'npm install -g retire'
 
                     // Run the scan. The '--outputformat json' can be useful for report parsing.
                     // The '--path .' scans the current directory.
