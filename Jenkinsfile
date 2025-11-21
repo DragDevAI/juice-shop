@@ -80,12 +80,12 @@ pipeline {
                 }
             }
         }
+    }
 
-        post {
-            always {
-                // Publish the results after the scan
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-            }
-       }
+    post {
+        always {
+            // Publish the results after the scan
+            dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+        }
     }
 }
