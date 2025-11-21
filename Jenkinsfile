@@ -63,7 +63,23 @@ pipeline {
                 }
             }
         }
-    }
+
+        stage('OWASP ZAP Scan') {
+            steps {
+                script {
+                    // Use ZAP plugin's zapAttack step
+                    zapAttack(
+                        zapPath: '/usr/local/bin/zap',  // Specify ZAP executable path (if using local install)
+                        targetURL: 'http://localhost:8080',  // URL of the application to be scanned
+                        startUrl: 'http://localhost:8080',  // Starting point for ZAP to scan
+                        scanType: 'full',  // Full scan (or 'quick' for lighter scan)
+                        failBuildOnAlert: true,  // Fail the build if any alerts are found
+                        alertThreshold: 'Medium',  // Alert severity threshold
+                        attackMode: 'full'  // Full scan or quick scan
+                    )
+                }
+            }
+        }
 
     post {
         always {
