@@ -13,6 +13,7 @@ pipeline {
             }
         }
 
+        // SAST with SonarQube
         stage('SonarQube Scan') {
             steps {
                 withSonarQubeEnv("${SONARQUBE_SERVER}") {
@@ -38,6 +39,7 @@ pipeline {
             }
         }
 
+        // SCA with OWASP Dependency Check
         stage('OWASP Dependency Check') {
             steps {
                 dependencyCheck additionalArguments: '''
@@ -46,6 +48,18 @@ pipeline {
                     -f 'ALL'
                     --prettyPrint
                 ''', odcInstallation: 'OWASP-DepCheck'
+            }
+        }
+
+        // SCA with Retire.js for JavaScript vulnerabilities
+        stage('JS Vulnerability Scan') {
+            steps {
+                // Install Retire.js globally or locally as a project dependency
+                sh 'npm install -g retire.js' 
+
+                // Run the scan. The '--outputformat json' can be useful for report parsing.
+                // The '--path .' scans the current directory.
+                sh 'retire --js --path .'
             }
         }
     }
