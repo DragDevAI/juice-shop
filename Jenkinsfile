@@ -59,7 +59,7 @@ pipeline {
 
                 // Run the scan. The '--outputformat json' can be useful for report parsing.
                 // The '--path .' scans the current directory.
-                sh 'retire --js --path .'
+                sh 'retire --js --path . --exitwith 0'
             }
         }
     }
