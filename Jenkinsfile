@@ -55,12 +55,11 @@ pipeline {
         stage('JS Vulnerability Scan') {
             steps {
                 nodejs('NodeJS') {
-                    // Install Retire.js globally or locally as a project dependency
+                    // Install Retire.js globally
                     sh 'npm install -g retire'
 
-                    // Run the scan. The '--outputformat json' can be useful for report parsing.
-                    // The '--path .' scans the current directory.
-                    sh 'retire --js --path . --exitwith 0'                    
+                    // Run the scan on the current directory.
+                    sh 'retire --path . --outputformat json --exitwith 0'                    
                 }
             }
         }
