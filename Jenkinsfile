@@ -86,8 +86,8 @@ pipeline {
                     // Use ZAP plugin's zapAttack step
                     zapAttack(
                         zapPath: '/usr/local/bin/zap',  // Specify ZAP executable path (if using local install)
-                        targetURL: 'http://localhost:3000',  // URL of the application to be scanned
-                        startUrl: 'http://localhost:3000',  // Starting point for ZAP to scan
+                        targetURL: 'https://juice-shop.herokuapp.com/#/',  // URL of the application to be scanned
+                        startUrl: 'https://juice-shop.herokuapp.com/#/',  // Starting point for ZAP to scan
                         scanType: 'full',  // Full scan (or 'quick' for lighter scan)
                         failBuildOnAlert: true,  // Fail the build if any alerts are found
                         alertThreshold: 'Medium',  // Alert severity threshold
