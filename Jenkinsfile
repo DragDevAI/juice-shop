@@ -54,12 +54,14 @@ pipeline {
         // SCA with Retire.js for JavaScript vulnerabilities
         stage('JS Vulnerability Scan') {
             steps {
-                // Install Retire.js globally or locally as a project dependency
-                sh 'npm install -g retire.js' 
+                nodejs('NodeJS') {
+                    // Install Retire.js globally or locally as a project dependency
+                    sh 'npm install -g retire.js' 
 
-                // Run the scan. The '--outputformat json' can be useful for report parsing.
-                // The '--path .' scans the current directory.
-                sh 'retire --js --path . --exitwith 0'
+                    // Run the scan. The '--outputformat json' can be useful for report parsing.
+                    // The '--path .' scans the current directory.
+                    sh 'retire --js --path . --exitwith 0'                    
+                }
             }
         }
     }
