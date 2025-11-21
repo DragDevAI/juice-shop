@@ -37,5 +37,23 @@ pipeline {
                 }
             }
         }
+
+        stage('OWASP Dependency Check') {
+            steps {
+                dependencyCheck additionalArguments: '''
+                    -o './'
+                    -s './'
+                    -f 'ALL'
+                    --prettyPrint
+                ''', odcInstallation: 'OWASP-DepCheck'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Publish the results after the scan
+            dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+        }
     }
 }
