@@ -719,6 +719,7 @@ export async function start (readyCallback?: () => void) {
   await datacreator()
   datacreatorEnd()
   const port = process.env.PORT ?? config.get('server.port')
+  console.log(`App is running on port: ${port}`);  // Log the port
   process.env.BASE_PATH = process.env.BASE_PATH ?? config.get('server.basePath')
 
   metricsUpdateLoop = Metrics.updateLoop() // vuln-code-snippet neutral-line exposedMetricsChallenge
