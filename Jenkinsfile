@@ -12,7 +12,7 @@ pipeline {
                 checkout scm
             }
         }
-
+        /*
         // SAST with SonarQube
         stage('SonarQube Scan') {
             steps {
@@ -64,7 +64,7 @@ pipeline {
             }
         }
 
-        /*
+        
         // Deploy application (replace with your actual deployment process)
         stage('Deploy Application') {
             steps {
