@@ -86,10 +86,6 @@ pipeline {
             steps {
                 script {
                     
-                    sh '''
-                        zap.sh -cmd -quickurl https://juice-shop.herokuapp.com -quickprogress -quickout zap_report.html
-                    '''
-                    /*
                     // Use ZAP plugin's zapAttack step
                     zapAttack(
                         zapPath: '/usr/local/bin/zap',  // Specify ZAP executable path (if using local install)
@@ -99,7 +95,7 @@ pipeline {
                         failBuildOnAlert: true,  // Fail the build if any alerts are found
                         alertThreshold: 'Medium',  // Alert severity threshold
                         attackMode: 'full'  // Full scan or quick scan
-                    )*/
+                    )
                 }
             }
         }
