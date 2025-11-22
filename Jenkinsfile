@@ -85,8 +85,7 @@ pipeline {
         stage('OWASP ZAP Scan') {
             steps {
                 script {
-                    script {
-                    // Run ZAP directly from the command line
+                    
                     sh '''
                         zap.sh -cmd -quickurl https://juice-shop.herokuapp.com -quickprogress -quickout zap_report.html
                     '''
@@ -100,8 +99,7 @@ pipeline {
                         failBuildOnAlert: true,  // Fail the build if any alerts are found
                         alertThreshold: 'Medium',  // Alert severity threshold
                         attackMode: 'full'  // Full scan or quick scan
-                    )
-                    */
+                    )*/
                 }
             }
         }
