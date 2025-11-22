@@ -64,6 +64,7 @@ pipeline {
             }
         }
 
+        /*
         // Deploy application (replace with your actual deployment process)
         stage('Deploy Application') {
             steps {
@@ -79,6 +80,7 @@ pipeline {
                 }
             }
         }
+        */
 
         stage('OWASP ZAP Scan') {
             steps {
