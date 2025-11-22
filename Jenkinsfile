@@ -85,6 +85,12 @@ pipeline {
         stage('OWASP ZAP Scan') {
             steps {
                 script {
+                    script {
+                    // Run ZAP directly from the command line
+                    sh '''
+                        zap.sh -cmd -quickurl https://juice-shop.herokuapp.com -quickprogress -quickout zap_report.html
+                    '''
+                    /*
                     // Use ZAP plugin's zapAttack step
                     zapAttack(
                         zapPath: '/usr/local/bin/zap',  // Specify ZAP executable path (if using local install)
@@ -95,6 +101,7 @@ pipeline {
                         alertThreshold: 'Medium',  // Alert severity threshold
                         attackMode: 'full'  // Full scan or quick scan
                     )
+                    */
                 }
             }
         }
